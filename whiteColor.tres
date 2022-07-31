@@ -1,0 +1,18 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+
+// 内置着色器
+void fragment(){
+	// 访问sprite TEXTURE的像素
+	vec4 previous_color = texture(TEXTURE,UV);
+	// 红、 绿、 蓝、 透明度
+	vec4 new_color = previous_color;
+	if (active){
+		new_color = vec4(1.0,1.0,1.0,previous_color.a);
+	}
+	COLOR = new_color;
+}"
